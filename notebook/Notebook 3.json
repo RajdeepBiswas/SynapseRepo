@@ -1,0 +1,55 @@
+{
+	"name": "Notebook 3",
+	"properties": {
+		"nbformat": 4,
+		"nbformat_minor": 2,
+		"bigDataPool": {
+			"referenceName": "SynSparkPool",
+			"type": "BigDataPoolReference"
+		},
+		"sessionProperties": {
+			"driverMemory": "28g",
+			"driverCores": 4,
+			"executorMemory": "28g",
+			"executorCores": 4,
+			"numExecutors": 2,
+			"conf": {
+				"spark.dynamicAllocation.enabled": "false",
+				"spark.dynamicAllocation.minExecutors": "2",
+				"spark.dynamicAllocation.maxExecutors": "2"
+			}
+		},
+		"metadata": {
+			"saveOutput": true,
+			"language_info": {
+				"name": "python"
+			},
+			"a365ComputeOptions": {
+				"id": "/subscriptions/ac48a080-d793-4c8a-b9ed-b0088d9ff1ef/resourceGroups/DeleteMe/providers/Microsoft.Synapse/workspaces/openhackdec2020/bigDataPools/SynSparkPool",
+				"name": "SynSparkPool",
+				"type": "Spark",
+				"endpoint": "https://openhackdec2020.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/SynSparkPool",
+				"auth": {
+					"type": "AAD",
+					"authResource": "https://dev.azuresynapse.net"
+				},
+				"sparkVersion": "2.4",
+				"nodeCount": 10,
+				"cores": 4,
+				"memory": 28
+			}
+		},
+		"cells": [
+			{
+				"cell_type": "code",
+				"source": [
+					"%%pyspark\r\n",
+					"df = spark.read.load('abfss://southridge@gen2storagedec.dfs.core.windows.net/raw_bronze/CloudSales/dboOrderDetails.txt', format='text')\r\n",
+					"display(df.limit(10))"
+				],
+				"attachments": null,
+				"execution_count": null
+			}
+		]
+	}
+}

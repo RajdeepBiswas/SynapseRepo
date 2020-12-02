@@ -1,0 +1,79 @@
+{
+	"name": "Notebook 1",
+	"properties": {
+		"nbformat": 4,
+		"nbformat_minor": 2,
+		"bigDataPool": {
+			"referenceName": "SynSparkPool",
+			"type": "BigDataPoolReference"
+		},
+		"sessionProperties": {
+			"driverMemory": "28g",
+			"driverCores": 4,
+			"executorMemory": "28g",
+			"executorCores": 4,
+			"numExecutors": 2,
+			"conf": {
+				"spark.dynamicAllocation.enabled": "false",
+				"spark.dynamicAllocation.minExecutors": "2",
+				"spark.dynamicAllocation.maxExecutors": "2"
+			}
+		},
+		"metadata": {
+			"saveOutput": true,
+			"language_info": {
+				"name": "python"
+			},
+			"a365ComputeOptions": {
+				"id": "/subscriptions/ac48a080-d793-4c8a-b9ed-b0088d9ff1ef/resourceGroups/DeleteMe/providers/Microsoft.Synapse/workspaces/openhackdec2020/bigDataPools/SynSparkPool",
+				"name": "SynSparkPool",
+				"type": "Spark",
+				"endpoint": "https://openhackdec2020.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/SynSparkPool",
+				"auth": {
+					"type": "AAD",
+					"authResource": "https://dev.azuresynapse.net"
+				},
+				"sparkVersion": "2.4",
+				"nodeCount": 10,
+				"cores": 4,
+				"memory": 28
+			}
+		},
+		"cells": [
+			{
+				"cell_type": "code",
+				"metadata": {
+					"diagram": {
+						"activateDiagramType": 1,
+						"chartConfig": {
+							"category": "bar",
+							"keys": [
+								"value"
+							],
+							"values": [
+								"value"
+							],
+							"yLabel": "value",
+							"xLabel": "value",
+							"aggregation": "COUNT",
+							"aggByBackend": false
+						},
+						"aggData": "{\"value\":{\"197ef1bf-2d4d-4813-83ca-000037f8ffb6,ad803f0b-688f-4d6b-a8ba-6c1c96ccb911,2017-04-17 00:00:00.0000000,2017-04-21 00:00:00.0000000,34.9800,2017-04-17 00:00:00.0000000,2017-04-21 00:00:00.0000000\":1,\"1a8ccf3f-44b2-4f91-8a93-0000447a035c,f60eee3c-89c8-4dc3-a150-87bd4e170ae1,2017-08-01 00:00:00.0000000,2017-08-03 00:00:00.0000000,49.9700,2017-08-01 00:00:00.0000000,2017-08-03 00:00:00.0000000\":1,\"3c326201-a86e-4083-a124-0000b3850edf,643a1e1c-070a-4791-83c3-a42b624cc2c8,2017-04-29 00:00:00.0000000,2017-05-01 00:00:00.0000000,34.9800,2017-04-29 00:00:00.0000000,2017-05-01 00:00:00.0000000\":1,\"4ae36387-8afc-4eef-a13d-0002bc5b23dd,a2ee7009-cb83-49d5-980a-86e8b5d06685,2017-05-14 00:00:00.0000000,2017-05-16 00:00:00.0000000,34.9800,2017-05-14 00:00:00.0000000,2017-05-16 00:00:00.0000000\":1,\"762e1c41-241d-4b1d-a517-0002dd2676c5,066a414a-cc58-47f5-89d7-f1a5fa056511,2017-10-24 00:00:00.0000000,2017-10-27 00:00:00.0000000,49.9700,2017-10-24 00:00:00.0000000,2017-10-27 00:00:00.0000000\":1,\"OrderID,CustomerID,OrderDate,ShipDate,TotalCost,CreatedDate,UpdatedDate\":1,\"bc1554e5-77ef-4d7a-a676-0000df5ec5b8,0a8fa251-5c43-496e-b2c5-ee793a5e42c8,2017-08-04 00:00:00.0000000,2017-08-06 00:00:00.0000000,34.9800,2017-08-04 00:00:00.0000000,2017-08-06 00:00:00.0000000\":1,\"d5c18c54-a98f-4cc3-9b6d-00035859ad9e,f009b460-3b38-4af9-ad09-fdecf9609d3d,2017-06-07 00:00:00.0000000,2017-06-09 00:00:00.0000000,19.9900,2017-06-07 00:00:00.0000000,2017-06-09 00:00:00.0000000\":1,\"ec89d158-e920-44ab-9141-0001fbb1de5b,0af3c2d2-ecd1-4fc0-a23e-0eed1d1171a7,2017-10-03 00:00:00.0000000,2017-10-07 00:00:00.0000000,34.9800,2017-10-03 00:00:00.0000000,2017-10-07 00:00:00.0000000\":1,\"f014faca-be51-4b26-b269-00025177b9e6,a083255d-eeae-40cc-b852-bb936d5861ee,2017-10-05 00:00:00.0000000,2017-10-07 00:00:00.0000000,34.9800,2017-10-05 00:00:00.0000000,2017-10-07 00:00:00.0000000\":1}}",
+						"isSummary": false,
+						"previewData": {
+							"filter": null
+						},
+						"isSql": false
+					}
+				},
+				"source": [
+					"%%pyspark\r\n",
+					"df = spark.read.load('abfss://southridge@gen2storagedec.dfs.core.windows.net/raw_bronze/CloudSales/dboOrders.txt', format='text')\r\n",
+					"display(df.limit(10))"
+				],
+				"attachments": null,
+				"execution_count": 1
+			}
+		]
+	}
+}
